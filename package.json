@@ -1,0 +1,29 @@
+{
+  "name": "shorturl",
+  "version": "1.0.0",
+  "description": "shorts urls",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trion129/Url-Shortener.git"
+  },
+  "keywords": [
+    "url",
+    "short",
+    "nodejs",
+    "heroku"
+  ],
+  "author": "Trion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trion129/Url-Shortener/issues"
+  },
+  "homepage": "https://github.com/Trion129/Url-Shortener#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongodb": "^2.1.18"
+  }
+}

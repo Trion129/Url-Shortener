@@ -3,7 +3,8 @@ var mongodb = require("mongodb");
 var app = express();
 
 app.get("/:param",function(req,res){
-	if(req.param.param.match(/^http:\/\/.*\.com\/?.*/i)){
+	res.end(req.params.param);
+	if(req.params.param.match(/^http:\/\/.*\.com\/?.*/i)){
 		mongodb.MongoClient.connect(process.env.MONGO_URI
 			,function(err,db){
 				if(err){
@@ -12,23 +13,23 @@ app.get("/:param",function(req,res){
 				}
 				db.urls.insert({
 					_id : process.env.index,
-					url : req.param.param
+					url : req.params.param
 				});
 				process.env.index++;
 				res.end(JSON.stringify({
 					_id : process.env.index - 1,
-					url : req.param.param
+					url : req.params.param
 				}));
 			});
 	}
-	else if(req.param.param.match(/^[0-9]+$/i)){
+	else if(req.params.param.match(/^[0-9]+$/i)){
 		mongodb.MongoClient.connect(process.env.MONGO_URI
 			,function(err,db){
 				if(err){
 					res.end("Error connecting to database");
 					return;
 				}
-				var myCursor = db.urls.find({_id: req.param.param});
+				var myCursor = db.urls.find({_id: req.params.param});
 				var arrayed = myCursor.toArray();
 				res.redirect(arrayed[0].url);
 				res.end();

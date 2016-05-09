@@ -3,6 +3,12 @@ var mongodb = require("mongodb");
 var shortid = require("shortid");
 var app = express();
 
+app.get("/",function(req,res){
+	res.end("<h2>Usage is https://shorturl-trion129.herokuapp.com/http://www.google.com</h2>
+		<h2>To use the code for a website visit https://shorturl-trion129.herokuapp.com/HkyYIj6-</h2>");
+});
+
+
 app.get("/:param(*)",function(req,res){
 	if(req.params.param.match(/^http:\/\/.*\.com\/?.*/i)){
 		mongodb.MongoClient.connect(process.env.MONGO_URI || "mongodb://trion:paintball@ds017432.mlab.com:17432/mymongo"

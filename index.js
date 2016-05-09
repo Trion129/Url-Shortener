@@ -4,8 +4,8 @@ var shortid = require("shortid");
 var app = express();
 
 app.get("/",function(req,res){
-	res.end("<h2>Usage is https://shorturl-trion129.herokuapp.com/http://www.google.com</h2>
-		<h2>To use the code for a website visit https://shorturl-trion129.herokuapp.com/HkyYIj6-</h2>");
+	res.send("<h2>Usage is https://shorturl-trion129.herokuapp.com/http://www.google.com</h2><h2>To use the code for a website visit https://shorturl-trion129.herokuapp.com/HkyYIj6-</h2>");
+	res.end();
 });
 
 

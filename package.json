@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Trion129/Url-Shortener#readme",
   "dependencies": {
     "express": "^4.13.4",
-    "mongodb": "^2.1.18"
+    "mongodb": "^2.1.18",
+    "shortid": "^2.2.6"
   }
 }

@@ -1,28 +1,29 @@
 var express = require("express");
 var mongodb = require("mongodb");
+var shortid = require("shortid");
 var app = express();
 
 app.get("/:param(*)",function(req,res){
 	if(req.params.param.match(/^http:\/\/.*\.com\/?.*/i)){
-		mongodb.MongoClient.connect(process.env.MONGO_URI
+		res.end("process.env.MONGO_URI");
+		mongodb.MongoClient.connect(process.env.MONGO_URI || "mongodb://trion:paintball@ds017432.mlab.com:17432/mymongo"
 			,function(err,db){
 				if(err){
 					res.end("Error connecting to Database");
 					return;
 				}
 				db.urls.insert({
-					_id : process.env.index,
+					_id : shortid.generate(),
 					url : req.params.param
 				});
-				process.env.index++;
 				res.end(JSON.stringify({
-					_id : process.env.index - 1,
+					_id : shortid.generate(),
 					url : req.params.param
 				}));
 			});
 	}
 	else if(req.params.param.match(/^[0-9]+$/i)){
-		mongodb.MongoClient.connect(process.env.MONGO_URI
+		mongodb.MongoClient.connect(process.env.MONGO_URI || "mongodb://trion:paintball@ds017432.mlab.com:17432/mymongo"
 			,function(err,db){
 				if(err){
 					res.end("Error connecting to database");

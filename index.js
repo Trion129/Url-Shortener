@@ -3,7 +3,6 @@ var mongodb = require("mongodb");
 var app = express();
 
 app.get("/:param(*)",function(req,res){
-	res.end(req.params.param);
 	if(req.params.param.match(/^http:\/\/.*\.com\/?.*/i)){
 		mongodb.MongoClient.connect(process.env.MONGO_URI
 			,function(err,db){
